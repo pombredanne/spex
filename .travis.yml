@@ -1,0 +1,17 @@
+language: python
+before_install:
+    - sudo pip install codecov
+install:
+    - sudo apt-get install pypy
+    - pip install tox
+script:
+    - tox
+after_success:
+    codecov
+env:
+  - TOXENV=py27
+  - TOXENV=py32
+  - TOXENV=py33
+  - TOXENV=py34
+  - TOXENV=pypy
+  - TOXENV=pypy3
