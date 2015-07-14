@@ -38,5 +38,8 @@ def driver(application, application_args, spex_conf, verbose=False):
 
 def daemon():
     """Runs the spex in daemon mode, booting the environment ready for PySpark to manipulate it for operation"""
-    import pyspark.daemon
-    pyspark.daemon.manager()
+    try:
+        import pyspark.daemon
+        pyspark.daemon.manager()
+    except ImportError:
+        raise ImportError('PySpark not correctly setup?')
